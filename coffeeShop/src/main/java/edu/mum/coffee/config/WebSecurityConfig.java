@@ -18,7 +18,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home", "/index").permitAll()
                 .anyRequest().authenticated()
                 .and()
-            .formLogin()
+            .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
             	.permitAll()
             	.and()
             .logout()
@@ -30,5 +30,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("super").password("pw").roles("ADMIN");
-	}
+	} 
 }

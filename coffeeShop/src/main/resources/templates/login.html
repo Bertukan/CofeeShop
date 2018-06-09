@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+<meta charset="UTF-8" />
+<title>Add Product</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div class="container">
+
+	<br/>
+	<br/>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">Create a product</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<form th:action="@{/home}"  method="POST">
+							<div class="form-group">
+								User Name: <input id="username" type="text" class="form-control" name="username" value="" placeholder="email" />
+									
+								<br />
+							</div>
+
+							<div class="form-group">
+							Pass Word  <input id="password" type="password" class="form-control" name="password" placeholder="password" />
+									
+								<br />
+							</div>
+	
+							<div class="text-center">
+								<input type="submit" class="btn btn-default" value="Login" />	 
+							</div>
+						</form>
+						 <div class="form-group">
+                <div class="col-md-12 control">
+                  <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                    Don't have an account!
+                    <a href="#" th:href="@{/register}">Sign Up Here</a>
+                  </div>
+                </div>
+              </div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br />
+
+	</div>
+	<div th:if="${errorMessage}" th:utext="${errorMessage}"
+		style="color: red; font-style: italic">...</div>
+</body>
+</html>

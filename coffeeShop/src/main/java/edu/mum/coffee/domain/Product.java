@@ -5,6 +5,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Product {
@@ -12,10 +16,17 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	@NotEmpty(message = "Product name cannot be empty")
 	private String productName;
+	
 	private String description;
+	
+	@Min(value=1, message = "Price type cannot be empty")
 	private double price;
 	@Enumerated(EnumType.STRING)
+	
+	 @NotNull(message = "Product type cannot be empty")
 	private ProductType productType;
 
 	public Product() {

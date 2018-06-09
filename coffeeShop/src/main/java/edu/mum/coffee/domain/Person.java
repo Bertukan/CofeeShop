@@ -8,16 +8,30 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
 	@Id
 	@GeneratedValue
 	private long id;
+	
+	@NotEmpty(message = "FirstName cannot be empty")
 	private String firstName;
+	
+	@NotEmpty(message = "FirstName cannot be empty")
 	private String lastName;
+	
+	 @NotEmpty(message = "Email cannot be empty")
+	  @Email
 	private String email;
 	@OneToOne(cascade = CascadeType.ALL)
+	
+	
+	
+
 	private Address address;
 	private String phone;
 	private boolean enable;

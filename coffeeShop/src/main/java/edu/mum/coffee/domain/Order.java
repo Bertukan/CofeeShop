@@ -31,6 +31,7 @@ public class Order {
 	@OneToOne
 	private Person person;
 
+
 	public int getId() {
 		return id;
 	}

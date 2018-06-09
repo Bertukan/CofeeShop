@@ -1,0 +1,91 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+<meta charset="UTF-8" />
+<title>Add Person</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div class="container">
+
+		<br /> <br />
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">Add Person</div>
+			<div class="panel-body">
+				<div class="row">
+
+
+					<form th:action="@{/addPerson}" th:object="${person}" method="POST">
+						<div class="col-md-6">
+							<div class="form-group">
+								First Name: <input type="text" class="form-control"
+									th:field="*{firstName}" /> <span th:errors="*{firstName}" class="text-danger"></span>
+								<br />
+							</div>
+
+							<div class="form-group">
+								Last Name: <input type="text" class="form-control"
+									th:field="*{lastName}" /> <span th:errors="*{lastName}" class="text-danger"></span>
+								<br />
+							</div>
+
+							<div class="form-group">
+								Email: <input type="email" class="form-control"
+									th:field="*{email}" /> <span th:errors="*{email}" class="text-danger"></span> <br />
+							</div>
+							<div class="form-group">
+								Phone: <input type="text" class="form-control"
+									th:field="*{phone}" /> <span th:errors="*{phone}" class="text-danger"></span> <br />
+							</div>
+						</div>
+						<div class="col-md-6">
+
+							<div class="form-group">
+								City: <input type="text" class="form-control"
+									th:field="*{address.city}" /> <span
+									th:errors="*{address.city}"></span> <br />
+							</div>
+							<div class="form-group">
+								State: <input type="text" class="form-control"
+									th:field="*{address.state}" /> <span
+									th:errors="*{address.state}"></span> <br />
+							</div>
+							<div class="form-group">
+								Country: <input type="text" class="form-control"
+									th:field="*{address.country}" /> <span
+									th:errors="*{address.country}"></span> <br />
+							</div>
+							<div class="form-group">
+								Zip-Code: <input type="text" class="form-control"
+									th:field="*{address.zipcode}" /> <span
+									th:errors="*{address.zipcode}"></span> <br />
+							</div>
+
+						</div>
+
+						<div class="text-center">
+							<input type="submit" class="btn btn-default" value="Create" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<br />
+
+	</div>
+	<div th:if="${errorMessage}" th:utext="${errorMessage}"
+		style="color: red; font-style: italic">...</div>
+</body>
+</html>
+
+
+
+
+

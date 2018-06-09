@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Add person</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+        <h1>Create a Order:</h1>
+        
+        <form th:action="@{/addOrder}" th:object="${order}" method="POST">
+
+                OrderDate:
+                <input type="text" th:field="*{firstN}"/>
+                <span th:errors="*{firstName}"></span>
+                <br/>
+               OrderLine:
+                <input type="text" th:field="*{orderline}"/>
+                <span th:errors="*{orderline}"></span>
+                <br/>
+                Email:
+               
+
+            </form>
+            <br/>
+        
+        
+        <div th:if="${errorMessage}" th:utext="${errorMessage}"
+            style="color:red;font-style:italic">...</div>
+    </body>
+</html>

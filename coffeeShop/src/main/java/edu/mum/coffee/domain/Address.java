@@ -4,13 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Address {
 
 	@Id
 	@GeneratedValue
 	private int id;
+	
+
 	private String city;
+	
+
 	private String state;
 	private String country;
 	private String zipcode;
@@ -46,5 +52,12 @@ public class Address {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", country=" + country + ", zipcode="
+				+ zipcode + "]";
+	}
+	
 
 }
