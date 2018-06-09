@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.coffee.domain.Person;
-import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.repository.PersonRepository;
 
 @Service

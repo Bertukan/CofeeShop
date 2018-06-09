@@ -15,16 +15,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/home", "/index").permitAll()
+          
+           
+                .antMatchers("/", "/home", "/index", "/register","/api/*","/api/**","/api/*/*").permitAll()
+                //.antMatchers("/", "/home", "/index").permitAll()
                 .anyRequest().authenticated()
                 .and()
-            .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
+            .formLogin().permitAll()
+           // .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
             	.permitAll()
             	.and()
             .logout()
             	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             	.logoutSuccessUrl("/")
-                .permitAll();
+                .permitAll()
+                .and() // ADDED CUS ITS GIVING INVALID CSRF WHEN WE DO POST AND PUT
+                .csrf().disable();
     }
 
 	@Autowired

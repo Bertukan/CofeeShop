@@ -21,7 +21,7 @@
 				<div class="row">
 					<div class="col-md-3"></div>
 					<div class="col-md-6">
-						<form th:action="@{/add}" th:object="${product}" method="POST">
+						<form th:action="@{/addOrder}" th:object="${order}" method="POST">
 							<div class="form-group">
 								Product Name: <input type="text" class="form-control"
 									th:field="*{productName}" /> <span th:errors="*{productName}"  class="text-danger"></span>
