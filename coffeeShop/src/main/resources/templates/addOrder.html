@@ -1,32 +1,65 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+<meta charset="UTF-8" />
+<title>Add Order</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div class="container">
 
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Add person</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
-    </head>
-    <body>
-        <h1>Create a Order:</h1>
-        
-        <form th:action="@{/addOrder}" th:object="${order}" method="POST">
+	<br/>
+	<br/>
 
-                OrderDate:
-                <input type="text" th:field="*{firstN}"/>
-                <span th:errors="*{firstName}"></span>
-                <br/>
-               OrderLine:
-                <input type="text" th:field="*{orderline}"/>
-                <span th:errors="*{orderline}"></span>
-                <br/>
-                Email:
-               
+		<div class="panel panel-primary">
+			<div class="panel-heading">Create a Order</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<form th:action="@{/add}" th:object="${product}" method="POST">
+							<div class="form-group">
+								Product Name: <input type="text" class="form-control"
+									th:field="*{productName}" /> <span th:errors="*{productName}"  class="text-danger"></span>
+								<br />
+							</div>
 
-            </form>
-            <br/>
-        
-        
-        <div th:if="${errorMessage}" th:utext="${errorMessage}"
-            style="color:red;font-style:italic">...</div>
-    </body>
+							<div class="form-group">
+								Product Description: <input type="text" class="form-control"
+									th:field="*{description}" /> <span th:errors="*{description}" class="text-danger"></span>
+								<br />
+							</div>
+
+							<div class="form-group">
+								Price: <input type="text" class="form-control"
+									th:field="*{price}" /> <span th:errors="*{price}" class="text-danger"></span> <br />
+							</div>
+							<div class="form-group">
+								Product Type: <select class="form-control"
+									th:field="*{productType}" id="productType">
+									<option th:each="productType : ${productTypes}"
+										th:text="${productType}" th:value="${productType}"></option>
+								</select> <span th:errors="*{productType}"  class="text-danger"></span> <br />
+							</div>
+							<div class="text-center">
+								<input type="submit" class="btn btn-default" value="Create" />
+							</div>
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br />
+
+	</div>
+	<div th:if="${errorMessage}" th:utext="${errorMessage}"
+		style="color: red; font-style: italic">...</div>
+</body>
 </html>
