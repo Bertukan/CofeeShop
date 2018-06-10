@@ -19,11 +19,11 @@
   <li><a href="/products">Products</a></li>
   <li><a href="/persons">Persons</a></li>
   <li class="active"><a href="/orders">Orders</a></li>
-   <li><a href="/productDetails/{id}">ShoppingCart</a></li>
+   
 </ul>
-      <h1>Available Products</h1>
-     <a class="btn btn-default" href="add">Add a Product</a>
-     <a class="btn btn-default" th:href="@{/orderDetails}">Checkout</a>
+      <h3>Add products to your cart</h3> <a style="float:right;" class="btn btn-primary" th:href="@{/orderDetails}">Checkout</a>
+     
+     
       <br/><br/>
       <div class="container">
       <div class="alert alert-info" th:if="${message!=null}"
@@ -47,6 +47,7 @@
              </td>
             </tr>
          </table>
+          
       </div>
    </body>
 </html>
