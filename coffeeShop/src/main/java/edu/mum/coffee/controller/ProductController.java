@@ -26,7 +26,6 @@ public class ProductController {
 	//retrieve
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
-
 	public String getAllProducts(Model model) {
 		model.addAttribute("products", productService.getAllProduct());
 		model.addAttribute("productTypes", ProductType.values());

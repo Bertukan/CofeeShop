@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.coffee.domain.Product;
+import edu.mum.coffee.domain.ProductType;
 import edu.mum.coffee.service.ProductService;
 
 @RestController
@@ -34,9 +35,13 @@ public class coffeeshopRestController {
 	// get Products
 
 	@GetMapping("/products")
-
 	public List<Product> getAllProducts() {
 		return productService.getAllProduct();
+	}
+	//get by type
+	@GetMapping("/productType/{type}")
+	public List<Product> getProductsByType(@PathVariable(value = "type") ProductType type) {
+		return productService.findByProductType(type);
 	}
 
 	// get product by id
