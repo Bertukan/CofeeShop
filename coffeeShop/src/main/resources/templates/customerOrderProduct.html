@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+
+<meta charset="UTF-8" />
+<title>Order List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<a href="/logout"><button style="float: Right" type="button"
+			class="btn btn-primary btn-sm">
+			<span class="glyphicon glyphicon-log-out"></span> Log out
+		</button></a>
+	<ul class="nav nav-tabs">
+		<li><a href="/home">Home</a></li>
+		<li><a href="/products">Products</a></li>
+		<li><a href="/persons">Persons</a></li>
+		<li><a href="/orders">Orders</a></li>
+		<li class="active"><a href="/productDetails/{id}">ShoppingCart</a></li>
+	</ul>
+	<h1>Your Cart</h1>
+
+
+	<br />
+	<br />
+	<div class="container">
+		<table class="table">
+			<tr>
+				<th>Product Name</th>
+				<th th:text="${orderline.product.productName}"></th>
+			</tr>
+			<tr>
+				<th>Product Description</th>
+				<th th:text="${orderline.product.description}"></th>
+			</tr>
+			<tr>
+				<th>Price</th>
+				<th th:text="${orderline.product.price}"></th>
+			</tr>
+
+			<tr>
+				<th>Product Type</th>
+				<th th:text="${orderline.product.productType}"></th>
+			</tr>
+
+		</table>
+</div>
+	<form action="#" method="post">
+		Quantity <select>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		<button type="button" class="btn btn-default">Add</button>
+	</form>
+</body>
+</html>

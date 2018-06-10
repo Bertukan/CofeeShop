@@ -37,10 +37,11 @@ public class OrderController {
     
     @RequestMapping(value = "/productDetails/{id}", method=RequestMethod.GET)
 	public String getProduct(@PathVariable int id, Model model) {
+    	System.out.println(id);
 		Orderline orderLine=new Orderline();
 		orderLine.setProduct(productService.getProduct(id));
+		System.out.println(orderLine.getProduct().getProductName());
 		model.addAttribute("orderline", orderLine);
-		model.addAttribute("items", 0);
 		return "customerOrderProduct";
 	}
 
