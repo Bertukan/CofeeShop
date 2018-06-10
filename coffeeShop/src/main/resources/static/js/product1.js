@@ -13,8 +13,10 @@ $(function(){
 
 });
 
+alert("hey");
+
 	function process(data){
-		alert("hey")
+		alert("hey");
         //console.log(data);
         //ajax call again for post
 		var prodType = $("#selectProductType").val();
