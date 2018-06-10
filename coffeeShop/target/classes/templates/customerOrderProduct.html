@@ -30,6 +30,7 @@
 	<br />
 	<br />
 	<div class="container">
+	<form th:action="@{/addToCart}" method="post" th:object="${orderline}">
 		<table class="table">
 			<tr>
 				<th>Product Name</th>
@@ -49,16 +50,28 @@
 				<th th:text="${orderline.product.productType}"></th>
 			</tr>
 
+			<tr>
+				<th>
+					<input type="hidden" th:field="*{product.id}" /> 
+					<input type="hidden" th:field="*{product.productName}" /> 
+					<input type="hidden" th:field="*{product.price}" /> 
+					<input type="hidden" th:field="*{product.productType}" /> 
+					<input type="hidden" th:field="*{product.description}" />
+							 <select class="form-control" th:field="*{quantity}">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>
+					
+				</th>
+				<th>
+					<button class="btn btn-default">Add To Cart</button>
+				</th>
+			</tr>
 		</table>
-</div>
-	<form action="#" method="post">
-		Quantity <select>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-		</select>
-		<button type="button" class="btn btn-default">Add</button>
-	</form>
+		</form>
+	</div>
+
 </body>
 </html>

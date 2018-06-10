@@ -1,13 +1,18 @@
 package edu.mum.coffee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.mum.coffee.domain.Order;
 import edu.mum.coffee.domain.Orderline;
 import edu.mum.coffee.domain.ProductType;
 import edu.mum.coffee.service.OrderService;
@@ -44,6 +49,31 @@ public class OrderController {
 		model.addAttribute("orderline", orderLine);
 		return "customerOrderProduct";
 	}
+    
+    @RequestMapping(value = "/orderDetails")
+	public String checkOrder(HttpSession session, Model model) {
+		Object orderObj = session.getAttribute("shoppingcart");
+		if (orderObj == null) {
+			return "redirect:/orders";
+		}
+		Order order = (Order) orderObj;
+		model.addAttribute("order", order);
+		return "orderDetails";
+	}
+    
+    @RequestMapping(value="/addToCart",method=RequestMethod.POST)
+    public String addOrderline(HttpSession session, @ModelAttribute("orderline") Orderline orderline,
+			RedirectAttributes redirectAttr) {
+		Object orderObj = session.getAttribute("shoppingcart");
+		if (orderObj == null) {
+			orderObj = new Order();
+			session.setAttribute("orderCart", orderObj);
+		}
+		Order order = (Order) orderObj;
+		orderline.setOrder(order);
+		order.addOrderLine(orderline);
+		redirectAttr.addFlashAttribute("message", "You have "+order.getOrderLines().size() + " item(s)");
+		return "redirect:/orders";
 
 
-}
+}}

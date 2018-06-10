@@ -22,10 +22,12 @@
    <li><a href="/productDetails/{id}">ShoppingCart</a></li>
 </ul>
       <h1>Available Products</h1>
-      <a href="add">Add a Product</a>
-     
+     <a class="btn btn-default" href="add">Add a Product</a>
+     <a class="btn btn-default" th:href="@{/orderDetails}">Checkout</a>
       <br/><br/>
       <div class="container">
+      <div class="alert alert-info" th:if="${message!=null}"
+						th:text="${message}"></div>
          <table class = "table">
             <tr>
             
