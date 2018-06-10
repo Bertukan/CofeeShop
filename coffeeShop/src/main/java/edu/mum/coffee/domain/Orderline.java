@@ -48,8 +48,17 @@ public class Orderline {
 		return quantity * product.getPrice();
 	}
 
-	public double getPrice() {
+	public String getSubTotalString() {
+		return "$"+getSubtotal();
+	}
+	
+	public double getPrice() { 
 		return product.getPrice();
+	}
+
+	@Override
+	public String toString() {
+		return "Orderline [id=" + id + ", quantity=" + quantity + ", product=" + product + ", order=" + order + "]";
 	}
 
 }

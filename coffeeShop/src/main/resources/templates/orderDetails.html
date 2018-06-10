@@ -1,52 +1,51 @@
 <!DOCTYPE HTML>
 
 <html xmlns:th="http://www.thymeleaf.org">
-   <head>
-   
-   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"/>
- 
-      <meta charset="UTF-8" />
-      <title>Order List</title>
-      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-   </head>
-   <body>
-     <a href ="/logout"><button style= "float:Right" type="button" class="btn btn-primary btn-sm">
-          <span class="glyphicon glyphicon-log-out"></span>  Log out
-        </button></a>
-   <ul class="nav nav-tabs">
-<li ><a href="/home">Home</a></li>
-  <li><a href="/products">Products</a></li>
-  <li><a href="/persons">Persons</a></li>
-  <li class="active"><a href="/orders">Orders</a></li>
-   <li><a href="/productDetails/{id}">ShoppingCart</a></li>
-</ul>
-      <h1>Available Products</h1>
-     <a class="btn btn-default" href="add">Add a Product</a>
-     <a class="btn btn-default" th:href="@{/orderDetails}">Checkout</a>
-      <br/><br/>
-      <div class="container">
-      <div class="alert alert-info" th:if="${message!=null}"
-						th:text="${message}"></div>
-         <table class = "table">
-            <tr>
-            
-               <th>Product Name</th>
-               <th>Description</th>
-               <th>Price</th>
-               <th>Product Type</th>
-               <th>Actions</th>
-            </tr>
-            <tr th:each ="product : ${products}">
-               <td th:text="${product.productName}">...</td>
-               <td th:text="${product.description}">...</td>
-               <td th:text="${product.price}">...</td>
-               <td th:text="${product.productType}">...</td>
-             <td><p style="float:left;" data-placement="top" data-toggle="tooltip" title="Edit"><a th:href="@{'/productDetails/'+${product.id}}"  class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" > 
-             <span class="glyphicon glyphicon-shopping-cart" >Add to Cart</span></a></p>
-             </td>
-            </tr>
-         </table>
-      </div>
-   </body>
+<head>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+
+<meta charset="UTF-8" />
+<title>Order List</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<a href="/logout"><button style="float: Right" type="button"
+			class="btn btn-primary btn-sm">
+			<span class="glyphicon glyphicon-log-out"></span> Log out
+		</button></a>
+	<ul class="nav nav-tabs">
+		<li><a href="/home">Home</a></li>
+		<li><a href="/products">Products</a></li>
+		<li><a href="/persons">Persons</a></li>
+		<li class="active"><a href="/orders">Orders</a></li>
+		<li><a href="/productDetails/{id}">ShoppingCart</a></li>
+	</ul>
+	<h1>Available Products</h1>
+	<a class="btn btn-default" href="add">Add a Product</a>
+	<a class="btn btn-default" th:href="@{/payOrder}">PAY Transaction</a>
+	<br />
+	<br />
+	<div class="container">
+		<table class="table">
+			<tr>
+				<th>Product Type</th>
+				<th>Product Name</th>
+				<th>Unity Price</th>
+				<th>Quantity</th>
+				<th>Total Price ($)</th>
+			</tr>
+			<tr th:each="orderLine:${order.orderLines}">
+				<td th:text="${orderLine.product.productType}"></td>
+				<td th:text="${orderLine.product.productName}"></td>
+				<td th:text="${orderLine.product.price}"></td>
+				<td th:text="${orderLine.quantity}"></td>
+				<td th:text="${orderLine.subTotalString}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
 </html>

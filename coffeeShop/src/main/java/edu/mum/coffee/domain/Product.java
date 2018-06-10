@@ -13,6 +13,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class Product {
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
+				+ price + ", productType=" + productType + "]";
+	}
+
 	@Id
 	@GeneratedValue
 	private int id;
@@ -75,6 +81,10 @@ public class Product {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
