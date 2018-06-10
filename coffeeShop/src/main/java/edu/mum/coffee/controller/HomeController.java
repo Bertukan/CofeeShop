@@ -34,6 +34,6 @@ public class HomeController {
 	public String consume(Model model) {
 		List<Product> products = rest.getProductsByType(ProductType.BREAKFAST);
 		model.addAttribute("productsByType", products);
-		return "index";
+		return "index1";
 	}
 }

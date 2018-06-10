@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class coffeeshopRestController {
 	private ProductService productService;
 
 	// save Products
+	@CrossOrigin
 	@PostMapping("/product")
 	public Product createProducts(@Valid @RequestBody Product product) {
 		return productService.save(product);
@@ -39,6 +41,8 @@ public class coffeeshopRestController {
 		return productService.getAllProduct();
 	}
 	//get by type
+	
+	@CrossOrigin
 	@GetMapping("/productType/{type}")
 	public List<Product> getProductsByType(@PathVariable(value = "type") ProductType type) {
 		return productService.findByProductType(type);

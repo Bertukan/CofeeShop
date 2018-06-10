@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    alert();
+    
     $.ajax({
         method: "GET",
         url: "http://localhost:9898/api/products"
@@ -7,12 +7,13 @@ $(document).ready(function(){
             var products = JSON.parse(JSON.stringify(data));
             products.forEach(element => {
                 var el = `<div class="card" class="prodElement">
-                <img  class="card-img-top" src="food.jpg" style="width:180px;"/>
+                <img  class="card-img-top" src="injera.jpg" style="width:180px;"/>
                 <div class="card-body"><h5 >${element.productName}</h5>
-                    <p class="card-text" >${element.description}</p>
-                    <a class="btn btn-primary">Order</a>
+                    <p class="card-text" >${element.description}</p><button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
+                    
                 </div>`
-                $('#products').append(el);
+                $('#prd').append(el);
             });
         });
 });
